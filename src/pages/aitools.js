@@ -24,7 +24,7 @@ import {
    Studio WAJIB punya endpoint, karena soal dibuat AI.
    ========================================================= */
 
-const AI_ENDPOINT = import.meta.env?.VITE_AI_ENDPOINT || '';
+const AI_ENDPOINT = import.meta.env?.VITE_AI_ENDPOINT || '/api/chat';
 const MAX_HISTORY = 12;
 const GEN_TIMEOUT = 240000;
 
