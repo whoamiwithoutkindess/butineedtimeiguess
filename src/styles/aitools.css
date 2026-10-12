@@ -1,0 +1,2660 @@
+/* VERSI 5 — gabungan V1-V4 jadi satu file (ganti SELURUH isi file CSS aitools lama) */
+/* =========================================================
+   TOOLS — CHAT AI + STUDIO (GENERATOR LATIHAN)
+   Semua ikon = SVG dari icons.js (warna ikut `color`).
+   ========================================================= */
+
+.tl-page,
+.tl-page * {
+  box-sizing: border-box;
+}
+
+.tl-page {
+  --t-bg: #15100d;
+  --t-stage: #211914;
+  --t-line: rgba(255, 242, 220, 0.11);
+  --t-line-strong: rgba(255, 242, 220, 0.2);
+  --t-text: #f5ecdf;
+  --t-soft: #d5c7b5;
+  --t-muted: #9c8f81;
+  --t-accent: #d99a55;
+  --t-accent-soft: #ebbd86;
+  --t-accent-deep: #9c5f31;
+  --t-ok: #8cc79a;
+  --t-bad: #e08678;
+
+  --t-max: 1180px;
+  --t-pad: 28px;
+
+  position: relative;
+  min-height: 100dvh;
+  width: 100%;
+  overflow: hidden;
+  overflow: clip;
+  color: var(--t-text);
+  background: var(--t-bg);
+  font-family: 'Inter', sans-serif;
+  color-scheme: dark;
+}
+
+.tl-page button,
+.tl-page input,
+.tl-page textarea {
+  font-family: inherit;
+}
+
+.tl-page svg {
+  flex: none;
+  display: block;
+}
+
+.tl-glow {
+  position: absolute;
+  z-index: 0;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.tl-glow-a {
+  top: -140px;
+  right: -100px;
+  width: 460px;
+  height: 460px;
+  background: radial-gradient(circle, rgba(217, 154, 85, 0.16), transparent 68%);
+}
+
+.tl-glow-b {
+  bottom: -160px;
+  left: -120px;
+  width: 440px;
+  height: 440px;
+  background: radial-gradient(circle, rgba(156, 95, 49, 0.14), transparent 68%);
+}
+
+/* =========================================================
+   NAV  (tanpa backdrop-filter: navbar tidak sticky, jadi
+   blur-nya tidak terlihat tapi ikut membebani saat modal)
+   ========================================================= */
+
+.tl-page .tl-nav {
+  position: relative;
+  z-index: 1;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 0 32px;
+  border-bottom: 1px solid var(--t-line);
+  background: rgba(21, 16, 13, 0.94);
+}
+
+.tl-page .tl-nav-right {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.tl-page .tl-brand,
+.tl-page .tl-back,
+.tl-page .tl-account {
+  appearance: none;
+  cursor: pointer;
+}
+
+.tl-page .tl-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  padding: 0;
+  border: 0;
+  color: var(--t-text);
+  background: transparent;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.tl-page .tl-brand-symbol {
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(217, 154, 85, 0.28);
+  border-radius: 10px;
+  color: var(--t-accent-soft);
+  background: rgba(217, 154, 85, 0.08);
+  font-family: 'Noto Serif', serif;
+  font-size: 17px;
+}
+
+.tl-page .tl-back {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 40px;
+  padding: 0 16px;
+  line-height: 1;
+  border: 1px solid var(--t-line);
+  border-radius: 12px;
+  color: var(--t-soft);
+  background: rgba(255, 255, 255, 0.025);
+  font-size: 13px;
+  font-weight: 700;
+  transition: transform 180ms ease, border-color 180ms ease, background-color 180ms ease, color 180ms ease;
+}
+
+.tl-page .tl-back span {
+  display: block;
+  line-height: 1;
+}
+
+.tl-page .tl-back svg {
+  width: 18px;
+  height: 18px;
+  transition: transform 220ms ease;
+}
+
+.tl-page .tl-back:hover {
+  color: var(--t-text);
+  border-color: var(--t-line-strong);
+  background: rgba(255, 255, 255, 0.055);
+  transform: translateY(-1px);
+}
+
+.tl-page .tl-back:hover svg {
+  transform: translateX(-3px);
+}
+
+.tl-page .tl-account {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  color: var(--t-soft);
+  border: 1px solid var(--t-line);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.025);
+  transition: transform 180ms ease, border-color 180ms ease, background-color 180ms ease, color 180ms ease;
+}
+
+.tl-page .tl-account svg {
+  width: 20px;
+  height: 20px;
+}
+
+.tl-page .tl-account:hover {
+  color: var(--t-text);
+  border-color: rgba(217, 154, 85, 0.45);
+  background: rgba(217, 154, 85, 0.08);
+  transform: translateY(-1px);
+}
+
+.tl-page .tl-account:active {
+  transform: scale(0.95);
+}
+
+.tl-page .tl-back:focus-visible,
+.tl-page .tl-brand:focus-visible,
+.tl-page .tl-account:focus-visible {
+  outline: 2px solid var(--t-accent);
+  outline-offset: 3px;
+}
+
+/* =========================================================
+   CONTENT + HEADING
+   ========================================================= */
+
+.tl-content {
+  position: relative;
+  z-index: 1;
+  width: min(var(--t-max), 100%);
+  margin: 0 auto;
+  padding: clamp(28px, 5vw, 56px) var(--t-pad) 48px;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(24px, 3.5vw, 36px);
+}
+
+.tl-heading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.tl-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--t-accent);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+}
+
+.tl-eyebrow::before,
+.tl-eyebrow::after {
+  content: '';
+  width: 22px;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.6;
+}
+
+.tl-heading h1 {
+  margin: 14px 0 0;
+  font-family: 'Noto Serif', serif;
+  font-size: clamp(32px, 4.4vw, 48px);
+  font-weight: 600;
+  line-height: 1.04;
+  letter-spacing: -0.04em;
+}
+
+.tl-heading p {
+  max-width: 520px;
+  margin: 14px 0 0;
+  color: var(--t-soft);
+  font-size: clamp(13px, 1.2vw, 15px);
+  line-height: 1.75;
+}
+
+.tl-label {
+  display: block;
+  color: var(--t-accent);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+/* =========================================================
+   TAB (Chat AI / Studio) + penanda bergeser
+   ========================================================= */
+
+.tl-page .tl-tabs {
+  position: relative;
+  align-self: center;
+  display: inline-flex;
+  gap: 4px;
+  padding: 5px;
+  border: 1px solid var(--t-line);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.tl-page .tl-tab-ink {
+  position: absolute;
+  top: 5px;
+  bottom: 5px;
+  left: 0;
+  width: 0;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--t-accent-soft), var(--t-accent));
+  box-shadow: 0 6px 18px rgba(156, 95, 49, 0.25);
+  pointer-events: none;
+}
+
+.tl-page .tl-tab-ink.is-ready {
+  transition:
+    transform 420ms cubic-bezier(0.22, 1, 0.36, 1),
+    width 420ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.tl-page .tl-tab {
+  appearance: none;
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 42px;
+  padding: 0 22px;
+  border: 0;
+  border-radius: 12px;
+  color: var(--t-soft);
+  background: transparent;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 700;
+  transition: color 180ms ease, background-color 180ms ease;
+}
+
+.tl-page .tl-tab:hover {
+  color: var(--t-text);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.tl-page .tl-tab[aria-selected='true'],
+.tl-page .tl-tab[aria-selected='true']:hover {
+  color: #1b130e;
+  background: transparent;
+}
+
+.tl-page .tl-tab:focus-visible {
+  outline: 2px solid var(--t-accent);
+  outline-offset: 2px;
+}
+
+/* ---------- panel: transisi ganti tab ---------- */
+
+.tl-panel {
+  width: 100%;
+  min-width: 0;
+}
+
+.tl-page .tl-panel {
+  transition: opacity 150ms ease, filter 150ms ease, transform 150ms ease;
+}
+
+.tl-page .tl-panel.is-leaving {
+  opacity: 0;
+  filter: blur(6px);
+  transform: translateY(-6px);
+  pointer-events: none;
+}
+
+.tl-page .tl-panel.is-entering {
+  animation: tlPanelIn 480ms cubic-bezier(0.22, 1, 0.36, 1) backwards;
+}
+
+@keyframes tlPanelIn {
+  from { opacity: 0; filter: blur(10px); transform: translateY(14px); }
+  to { opacity: 1; filter: blur(0); transform: none; }
+}
+
+@keyframes tlFade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes tlFadeOut {
+  to { opacity: 0; }
+}
+
+/* =========================================================
+   CHAT
+   ========================================================= */
+
+.tl-chat {
+  display: flex;
+  flex-direction: column;
+  height: clamp(540px, 74dvh, 780px);
+  overflow: hidden;
+  border: 1px solid var(--t-line);
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at 100% 0%, rgba(217, 154, 85, 0.1), transparent 40%),
+    var(--t-stage);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.28);
+}
+
+.tl-chat-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--t-line);
+}
+
+.tl-avatar {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(217, 154, 85, 0.3);
+  border-radius: 12px;
+  color: var(--t-accent-soft);
+  background: rgba(217, 154, 85, 0.09);
+}
+
+.tl-avatar-lg {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+}
+
+.tl-chat-title {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.tl-chat-title b {
+  font-size: 14px;
+}
+
+.tl-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--t-muted);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.tl-status i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--t-muted);
+}
+
+.tl-status.is-on i {
+  background: var(--t-ok);
+}
+
+/* ---------- daftar pesan ---------- */
+
+.tl-feed {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 22px 20px;
+}
+
+.tl-msg {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  max-width: 88%;
+}
+
+.tl-msg.is-user {
+  align-self: flex-end;
+}
+
+.tl-msg.is-new {
+  animation: tlMsgIn 440ms cubic-bezier(0.22, 1, 0.36, 1) backwards;
+}
+
+.tl-msg.is-user.is-new {
+  transform-origin: 100% 100%;
+}
+
+@keyframes tlMsgIn {
+  from { opacity: 0; filter: blur(8px); transform: translateY(14px) scale(0.97); }
+  to { opacity: 1; filter: blur(0); transform: none; }
+}
+
+.tl-bubble {
+  min-width: 0;
+  padding: 12px 16px;
+  border: 1px solid var(--t-line);
+  border-radius: 18px 18px 18px 6px;
+  color: var(--t-text);
+  background: rgba(255, 255, 255, 0.04);
+  font-size: 14px;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+
+.tl-msg.is-user .tl-bubble {
+  color: #1b130e;
+  border-color: rgba(217, 154, 85, 0.42);
+  border-radius: 18px 18px 6px 18px;
+  background: linear-gradient(135deg, var(--t-accent-soft), var(--t-accent));
+  font-weight: 500;
+}
+
+.tl-bubble.is-error {
+  color: var(--t-text);
+  border-color: rgba(224, 134, 120, 0.4);
+  background: rgba(224, 134, 120, 0.08);
+}
+
+.tl-bubble p {
+  margin: 0 0 8px;
+}
+
+.tl-bubble h4 {
+  margin: 12px 0 6px;
+  color: var(--t-accent-soft);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.tl-bubble ul,
+.tl-bubble ol {
+  margin: 0 0 8px;
+  padding-left: 20px;
+}
+
+.tl-bubble li {
+  margin: 0 0 4px;
+}
+
+.tl-bubble li::marker {
+  color: var(--t-accent);
+}
+
+.tl-bubble b {
+  color: var(--t-accent-soft);
+}
+
+.tl-msg.is-user .tl-bubble b {
+  color: inherit;
+}
+
+.tl-bubble code {
+  padding: 1px 6px;
+  border-radius: 6px;
+  color: var(--t-accent-soft);
+  background: rgba(217, 154, 85, 0.1);
+  font-size: 12.5px;
+}
+
+.tl-bubble > :last-child {
+  margin-bottom: 0;
+}
+
+.tl-table {
+  margin: 8px 0;
+  overflow-x: auto;
+}
+
+.tl-table table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.tl-table th,
+.tl-table td {
+  padding: 8px 10px;
+  border: 1px solid var(--t-line);
+  text-align: left;
+  vertical-align: top;
+}
+
+.tl-table th {
+  color: var(--t-accent-soft);
+  background: rgba(217, 154, 85, 0.08);
+  font-weight: 700;
+}
+
+/* ---------- mengetik ---------- */
+
+.tl-typing {
+  display: inline-flex;
+  gap: 5px;
+  padding: 6px 2px;
+}
+
+.tl-typing i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--t-accent);
+  opacity: 0.3;
+  animation: tlDot 1.1s ease-in-out infinite;
+}
+
+.tl-typing i:nth-child(2) {
+  animation-delay: 0.15s;
+}
+
+.tl-typing i:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+@keyframes tlDot {
+  0%, 80%, 100% { opacity: 0.3; transform: translateY(0); }
+  40% { opacity: 1; transform: translateY(-3px); }
+}
+
+/* ---------- sambutan ---------- */
+
+.tl-welcome {
+  margin: auto 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.tl-welcome > * {
+  animation: tlPanelIn 560ms cubic-bezier(0.22, 1, 0.36, 1) backwards;
+}
+
+.tl-welcome > :nth-child(2) { animation-delay: 60ms; }
+.tl-welcome > :nth-child(3) { animation-delay: 110ms; }
+.tl-welcome > :nth-child(4) { animation-delay: 170ms; }
+
+.tl-welcome h2 {
+  margin: 16px 0 0;
+  font-family: 'Noto Serif', serif;
+  font-size: clamp(22px, 2.8vw, 30px);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+}
+
+.tl-welcome p {
+  max-width: 420px;
+  margin: 10px 0 0;
+  color: var(--t-soft);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.tl-suggest-grid {
+  width: 100%;
+  max-width: 600px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.tl-suggest {
+  appearance: none;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px;
+  text-align: left;
+  cursor: pointer;
+  color: var(--t-text);
+  border: 1px solid var(--t-line);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.025);
+  transition: transform 160ms ease, border-color 160ms ease, background-color 160ms ease;
+}
+
+.tl-suggest:hover {
+  transform: translateY(-2px);
+  border-color: rgba(217, 154, 85, 0.45);
+  background: rgba(217, 154, 85, 0.07);
+}
+
+.tl-suggest-icon {
+  flex-shrink: 0;
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(217, 154, 85, 0.28);
+  border-radius: 12px;
+  color: var(--t-accent-soft);
+  background: rgba(217, 154, 85, 0.09);
+}
+
+.tl-suggest-label {
+  flex: 1;
+  min-width: 0;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+/* ---------- composer ---------- */
+
+.tl-composer {
+  padding: 14px 18px 16px;
+  border-top: 1px solid var(--t-line);
+  background: rgba(0, 0, 0, 0.14);
+}
+
+.tl-chips {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+  overflow-x: auto;
+}
+
+.tl-chips[hidden] {
+  display: none;
+}
+
+.tl-chips:not([hidden]) {
+  animation: tlFade 320ms ease backwards;
+}
+
+.tl-chip {
+  appearance: none;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 13px;
+  white-space: nowrap;
+  cursor: pointer;
+  color: var(--t-accent-soft);
+  border: 1px solid rgba(217, 154, 85, 0.28);
+  border-radius: 999px;
+  background: rgba(217, 154, 85, 0.07);
+  font-size: 12px;
+  font-weight: 600;
+  transition: background-color 160ms ease, border-color 160ms ease;
+}
+
+.tl-chip:hover {
+  color: var(--t-text);
+  border-color: rgba(217, 154, 85, 0.55);
+  background: rgba(217, 154, 85, 0.14);
+}
+
+.tl-input-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.tl-input-wrap {
+  flex: 1;
+  min-width: 0;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  border: 1px solid var(--t-line-strong);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.03);
+  transition: border-color 160ms ease, background-color 160ms ease, box-shadow 160ms ease;
+}
+
+.tl-input-wrap:focus-within {
+  border-color: var(--t-accent);
+  background: rgba(217, 154, 85, 0.06);
+  box-shadow: 0 0 0 3px rgba(217, 154, 85, 0.14);
+}
+
+/* satu baris, tanpa scrollbar; teks panjang memudar di sisi kanan.
+   font-size 16px mencegah zoom otomatis di iOS */
+.tl-page .tl-input,
+.tl-page .tl-input:focus {
+  flex: 1;
+  width: 100%;
+  min-width: 0;
+  height: 100%;
+  padding: 0;
+  color: var(--t-text);
+  border: 0;
+  border-radius: 0;
+  outline: none;
+  background: transparent;
+  box-shadow: none;
+  font-size: 16px;
+  line-height: 1.5;
+  white-space: nowrap;
+  text-overflow: clip;
+  -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 32px), rgba(0, 0, 0, 0.1));
+  mask-image: linear-gradient(90deg, #000 calc(100% - 32px), rgba(0, 0, 0, 0.1));
+}
+
+.tl-input::placeholder {
+  color: var(--t-muted);
+}
+
+.tl-send {
+  appearance: none;
+  flex-shrink: 0;
+  width: 52px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  cursor: pointer;
+  color: #1b130e;
+  border: 1px solid rgba(217, 154, 85, 0.42);
+  border-radius: 16px;
+  background: linear-gradient(135deg, var(--t-accent-soft), var(--t-accent));
+  box-shadow: 0 9px 25px rgba(156, 95, 49, 0.2);
+  transition: transform 180ms ease, filter 180ms ease;
+}
+
+.tl-send:hover:not(:disabled) {
+  filter: brightness(1.06);
+  transform: translateY(-2px);
+}
+
+.tl-send:active:not(:disabled) {
+  transform: scale(0.93);
+}
+
+.tl-send:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.tl-note {
+  margin: 10px 0 0;
+  color: var(--t-muted);
+  font-size: 11px;
+  text-align: center;
+}
+
+/* =========================================================
+   TOMBOL UMUM
+   ========================================================= */
+
+.tl-ghost,
+.tl-primary {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 42px;
+  padding: 0 18px;
+  border-radius: 13px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 700;
+  transition: transform 180ms ease, filter 180ms ease, border-color 180ms ease, background-color 180ms ease;
+}
+
+.tl-ghost {
+  color: var(--t-soft);
+  border: 1px solid var(--t-line);
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.tl-ghost:hover {
+  color: var(--t-text);
+  border-color: var(--t-line-strong);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.tl-primary {
+  min-height: 46px;
+  padding: 0 24px;
+  color: #1b130e;
+  border: 1px solid rgba(217, 154, 85, 0.42);
+  background: linear-gradient(135deg, var(--t-accent-soft), var(--t-accent));
+  box-shadow: 0 9px 25px rgba(156, 95, 49, 0.2);
+}
+
+.tl-primary:hover:not(:disabled) {
+  filter: brightness(1.05);
+  transform: translateY(-2px);
+}
+
+.tl-primary:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.tl-icon-btn {
+  width: 42px;
+  min-height: 42px;
+  padding: 0;
+}
+
+.tl-small {
+  min-height: 38px;
+  padding: 0 14px;
+  gap: 6px;
+  font-size: 12px;
+  box-shadow: none;
+}
+
+.tl-link {
+  appearance: none;
+  padding: 0;
+  border: 0;
+  color: var(--t-accent-soft);
+  background: transparent;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: rgba(217, 154, 85, 0.4);
+  text-underline-offset: 4px;
+}
+
+.tl-link[hidden] {
+  display: none;
+}
+
+.tl-link:hover {
+  color: var(--t-text);
+  text-decoration-color: var(--t-accent);
+}
+
+/* =========================================================
+   STUDIO
+   ========================================================= */
+
+.tl-studio {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.tl-studio-block {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 24px;
+  border: 1px solid var(--t-line);
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at 100% 0%, rgba(217, 154, 85, 0.08), transparent 44%),
+    var(--t-stage);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.28);
+}
+
+/* ---------- pilihan alat ---------- */
+
+.tl-tool-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.tl-tool {
+  appearance: none;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 14px;
+  padding: 16px;
+  text-align: left;
+  cursor: pointer;
+  color: var(--t-text);
+  border: 1px solid var(--t-line);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.025);
+  transition: transform 180ms ease, border-color 180ms ease, background-color 180ms ease;
+}
+
+.tl-tool:hover {
+  transform: translateY(-2px);
+  border-color: rgba(217, 154, 85, 0.45);
+  background: rgba(217, 154, 85, 0.07);
+}
+
+.tl-tool:focus-visible {
+  outline: 2px solid var(--t-accent);
+  outline-offset: 2px;
+}
+
+.tl-tool-icon {
+  flex: none;
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(217, 154, 85, 0.28);
+  border-radius: 14px;
+  color: var(--t-accent-soft);
+  background: rgba(217, 154, 85, 0.09);
+}
+
+.tl-tool-body b {
+  display: block;
+  font-size: 14px;
+}
+
+.tl-tool-body small {
+  display: block;
+  margin-top: 3px;
+  color: var(--t-muted);
+  font-size: 11.5px;
+  line-height: 1.5;
+}
+
+/* ---------- urutkan ---------- */
+
+.tl-sortbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.tl-sortbar[hidden] {
+  display: none;
+}
+
+.tl-sort-label {
+  margin-right: 4px;
+  color: var(--t-muted);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.tl-sort {
+  appearance: none;
+  padding: 8px 14px;
+  cursor: pointer;
+  color: var(--t-soft);
+  border: 1px solid var(--t-line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.025);
+  font-size: 12px;
+  font-weight: 700;
+  transition: color 160ms ease, border-color 160ms ease, background-color 160ms ease;
+}
+
+.tl-sort:hover {
+  color: var(--t-text);
+  border-color: var(--t-line-strong);
+}
+
+.tl-sort[aria-pressed='true'] {
+  color: var(--t-accent-soft);
+  border-color: rgba(217, 154, 85, 0.5);
+  background: rgba(217, 154, 85, 0.12);
+}
+
+.tl-sort:focus-visible {
+  outline: 2px solid var(--t-accent);
+  outline-offset: 2px;
+}
+
+/* ---------- riwayat ---------- */
+
+.tl-history {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.tl-hist {
+  position: relative;
+  overflow: visible;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  border: 1px solid var(--t-line);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.025);
+  transition: border-color 180ms ease, background-color 180ms ease, transform 180ms ease;
+}
+
+.tl-hist:hover {
+  border-color: var(--t-line-strong);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+/* kartu yang bisa dimainkan: seluruh kartu = tombol */
+.tl-hist.is-playable {
+  cursor: pointer;
+}
+
+.tl-hist.is-playable:hover {
+  transform: translateY(-2px);
+  border-color: rgba(217, 154, 85, 0.5);
+  background: rgba(217, 154, 85, 0.07);
+}
+
+.tl-hist.is-playable:active {
+  transform: scale(0.985);
+}
+
+.tl-hist.is-playable:focus-visible {
+  outline: 2px solid var(--t-accent);
+  outline-offset: 3px;
+}
+
+/* tombol di dalam kartu tidak ikut efek "tekan" kartu */
+.tl-hist-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: default;
+}
+
+.tl-hist-body {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.tl-hist-body b {
+  font-size: 14px;
+}
+
+.tl-hist-title {
+  overflow-wrap: anywhere;
+}
+
+.tl-hist-body small {
+  color: var(--t-soft);
+  font-size: 12px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.tl-hist-body .tl-hist-meta {
+  color: var(--t-muted);
+  font-size: 11px;
+}
+
+.tl-hist-body .tl-hist-meta.is-bad {
+  color: var(--t-bad);
+}
+
+.tl-rename {
+  width: 100%;
+  height: 34px;
+  padding: 0 10px;
+  color: var(--t-text);
+  border: 1px solid var(--t-accent);
+  border-radius: 10px;
+  background: rgba(217, 154, 85, 0.06);
+  box-shadow: 0 0 0 3px rgba(217, 154, 85, 0.14);
+  outline: none;
+  font-size: 16px; /* 16px mencegah zoom otomatis di iOS */
+  font-weight: 700;
+}
+
+.tl-hist.is-new {
+  animation: tlHistIn 540ms cubic-bezier(0.22, 1, 0.36, 1) backwards;
+  animation-delay: var(--d, 0ms);
+}
+
+@keyframes tlHistIn {
+  from { opacity: 0; filter: blur(8px); transform: translateY(-12px) scale(0.98); }
+  to { opacity: 1; filter: blur(0); transform: none; }
+}
+
+.tl-hist.is-done {
+  animation: tlHistDone 1100ms ease;
+}
+
+@keyframes tlHistDone {
+  from {
+    border-color: var(--t-ok);
+    background: rgba(140, 199, 154, 0.16);
+    box-shadow: 0 0 0 4px rgba(140, 199, 154, 0.14);
+    filter: blur(3px);
+  }
+}
+
+.tl-hist.is-removing {
+  pointer-events: none;
+}
+
+@keyframes tlHistOut {
+  35% {
+    border-color: rgba(224, 134, 120, 0.65);
+    background: rgba(224, 134, 120, 0.14);
+    box-shadow: 0 0 0 4px rgba(224, 134, 120, 0.12);
+  }
+  100% {
+    opacity: 0;
+    filter: blur(8px);
+    transform: translateX(26px) scale(0.97);
+    border-color: rgba(224, 134, 120, 0.4);
+    background: rgba(224, 134, 120, 0.12);
+  }
+}
+/* ===== kartu "sedang menyusun": satu kartu penuh jadi skeleton berkilau ===== */
+.tl-hist.is-generating {
+  overflow: hidden;
+  border-color: rgba(217, 154, 85, 0.4);
+  background: rgba(217, 154, 85, 0.05);
+  box-shadow: 0 0 0 1px rgba(217, 154, 85, 0.08), 0 0 28px rgba(217, 154, 85, 0.14);
+  animation: tlGlowPulse 2.4s ease-in-out infinite;
+}
+
+/* pita cahaya yang menyapu kartu ke kanan */
+.tl-hist.is-generating::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(
+    105deg,
+    transparent 30%,
+    rgba(255, 226, 180, 0.06) 42%,
+    rgba(255, 226, 180, 0.3) 50%,
+    rgba(255, 226, 180, 0.06) 58%,
+    transparent 70%
+  );
+  transform: translateX(-100%);
+  animation: tlSweep 1.7s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes tlSweep {
+  to { transform: translateX(100%); }
+}
+
+@keyframes tlGlowPulse {
+  0%, 100% { border-color: rgba(217, 154, 85, 0.3); }
+  50% { border-color: rgba(235, 189, 134, 0.7); }
+}
+
+/* kilau bintang kecil yang berkedip */
+.tl-magic {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.tl-magic i {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: #ffe3b8;
+  clip-path: polygon(50% 0, 60% 40%, 100% 50%, 60% 60%, 50% 100%, 40% 60%, 0 50%, 40% 40%);
+  opacity: 0;
+  animation: tlTwinkle 2.2s ease-in-out infinite;
+}
+
+.tl-magic i:nth-child(1) { left: 12%; top: 22%; animation-delay: 0s; }
+.tl-magic i:nth-child(2) { left: 30%; top: 68%; animation-delay: 0.5s; width: 9px; height: 9px; }
+.tl-magic i:nth-child(3) { left: 48%; top: 18%; animation-delay: 1.1s; }
+.tl-magic i:nth-child(4) { left: 64%; top: 62%; animation-delay: 0.3s; width: 10px; height: 10px; }
+.tl-magic i:nth-child(5) { left: 80%; top: 24%; animation-delay: 1.6s; width: 14px; height: 14px; }
+.tl-magic i:nth-child(6) { left: 92%; top: 70%; animation-delay: 0.9s; width: 9px; height: 9px; }
+
+@keyframes tlTwinkle {
+  0%, 100% { opacity: 0; transform: scale(0.2) rotate(0deg); }
+  50% { opacity: 0.95; transform: scale(1) rotate(45deg); }
+}
+
+.tl-hist.is-error {
+  border-color: rgba(224, 134, 120, 0.3);
+}
+
+.tl-hist-body .tl-shimmer-text {
+  color: transparent;
+  background: linear-gradient(90deg, var(--t-muted) 30%, var(--t-accent-soft) 50%, var(--t-muted) 70%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: tlShimmer 1.6s linear infinite;
+}
+
+@keyframes tlShimmer {
+  from { background-position: 200% 0; }
+  to { background-position: -200% 0; }
+}
+
+.tl-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 32px 20px;
+  text-align: center;
+  color: var(--t-accent);
+  border: 1px dashed var(--t-line-strong);
+  border-radius: 18px;
+}
+
+.tl-empty b {
+  margin-top: 4px;
+  color: var(--t-text);
+  font-size: 14px;
+}
+
+.tl-empty span {
+  max-width: 360px;
+  color: var(--t-muted);
+  font-size: 12.5px;
+  line-height: 1.6;
+}
+
+/* =========================================================
+   MODAL GENERATOR
+   Kunci kelancaran:
+   - blur backdrop STATIS (tidak dianimasikan), yang dianimasikan
+     hanya opacity -> dikerjakan GPU, tidak ngelag.
+   - animasi latar (shimmer / progress / spinner) dijeda selama
+     modal terbuka, supaya blur tidak dihitung ulang tiap frame.
+   - body kehilangan scrollbar -> JS menambah padding-right
+     setara lebar scrollbar (lockScroll), jadi halaman tidak geser.
+   ========================================================= */
+
+.tl-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1500;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  overscroll-behavior: contain;
+}
+body.tl-modal-open {
+  overflow: hidden;
+  padding-right: var(--tl-sbw, 0px);
+}
+.tl-modal.is-closing {
+  pointer-events: none;
+}
+
+.tl-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(7, 5, 4, 0.6);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  opacity: 0;
+  transition: opacity 380ms cubic-bezier(0.33, 1, 0.68, 1);
+  will-change: opacity;
+}
+
+.tl-modal.is-open .tl-modal-backdrop {
+  opacity: 1;
+}
+
+.tl-modal-panel {
+  position: relative;
+  z-index: 1;
+  width: min(620px, 100%);
+  max-height: 90dvh;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 30px;
+  border: 1px solid var(--t-line-strong);
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at 100% 0%, rgba(217, 154, 85, 0.1), transparent 32%),
+    var(--t-stage);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  filter: blur(6px);
+  transform: translate3d(0, 16px, 0) scale(0.975);
+  transition:
+    opacity 320ms cubic-bezier(0.33, 1, 0.68, 1),
+    filter 380ms cubic-bezier(0.33, 1, 0.68, 1),
+    transform 460ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform, filter;
+}
+
+.tl-modal.is-open .tl-modal-panel {
+  opacity: 1;
+  filter: blur(0);
+  transform: none;
+}
+
+.tl-modal.is-settled .tl-modal-panel {
+  filter: none;
+  will-change: auto;
+}
+
+.tl-modal-panel.is-loading .tl-field {
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+.tl-modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 1px solid var(--t-line);
+  border-radius: 50%;
+  color: var(--t-soft);
+  background: rgba(255, 255, 255, 0.025);
+  cursor: pointer;
+  transition: background-color 180ms ease, color 180ms ease;
+}
+
+.tl-modal-close:hover {
+  color: var(--t-text);
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.tl-modal-panel h2 {
+  margin: 10px 0 0;
+  padding-right: 44px;
+  font-family: 'Noto Serif', serif;
+  font-size: clamp(26px, 4vw, 34px);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.035em;
+}
+
+.tl-modal-sub {
+  margin: 10px 0 0;
+  color: var(--t-muted);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.tl-field {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 22px;
+  padding-top: 22px;
+  border-top: 1px solid var(--t-line);
+}
+
+.tl-field-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.tl-field-links {
+  display: inline-flex;
+  gap: 16px;
+}
+
+.tl-count {
+  color: var(--t-muted);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.tl-count b {
+  margin-right: 2px;
+  color: var(--t-accent-soft);
+  font-family: 'Noto Serif', serif;
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.tl-hint {
+  margin: 0;
+  color: var(--t-muted);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.tl-hint.is-warn {
+  color: var(--t-bad);
+}
+
+.tl-hint[hidden] {
+  display: none;
+}
+
+/* ---------- slider ---------- */
+
+.tl-range {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 100%;
+  height: 6px;
+  margin: 8px 0;
+  border-radius: 999px;
+  outline: none;
+  cursor: pointer;
+  background: linear-gradient(
+    90deg,
+    var(--t-accent) var(--fill, 0%),
+    rgba(255, 255, 255, 0.1) var(--fill, 0%)
+  );
+}
+
+.tl-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 22px;
+  height: 22px;
+  border: 3px solid var(--t-stage);
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--t-accent-soft), var(--t-accent));
+  box-shadow: 0 0 0 1px var(--t-accent);
+}
+
+.tl-range::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border: 3px solid var(--t-stage);
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--t-accent-soft), var(--t-accent));
+  box-shadow: 0 0 0 1px var(--t-accent);
+}
+
+.tl-range:focus-visible {
+  box-shadow: 0 0 0 4px rgba(217, 154, 85, 0.22);
+}
+
+.tl-range:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* ---------- checkbox topik ---------- */
+
+.tl-topics {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.tl-check {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 12px;
+  cursor: pointer;
+  border: 1px solid var(--t-line);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.025);
+  transition: border-color 160ms ease, background-color 160ms ease;
+}
+
+.tl-check input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.tl-check-box {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  display: grid;
+  place-items: center;
+  border: 1.5px solid var(--t-line-strong);
+  border-radius: 6px;
+  color: transparent;
+  transition: background-color 160ms ease, border-color 160ms ease;
+}
+
+.tl-check input:checked + .tl-check-box {
+  color: #1b130e;
+  border-color: var(--t-accent);
+  background: linear-gradient(135deg, var(--t-accent-soft), var(--t-accent));
+}
+
+.tl-check input:focus-visible + .tl-check-box {
+  box-shadow: 0 0 0 3px rgba(217, 154, 85, 0.35);
+}
+
+.tl-check:has(input:checked) {
+  border-color: rgba(217, 154, 85, 0.5);
+  background: rgba(217, 154, 85, 0.09);
+}
+
+.tl-check-name {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--t-text);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.tl-check-name svg {
+  color: var(--t-accent);
+}
+
+/* ---------- tingkat kesulitan ---------- */
+
+.tl-levels {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.tl-level {
+  position: relative;
+  cursor: pointer;
+}
+
+.tl-level input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.tl-level > span {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 6px;
+  border: 1px solid var(--t-line);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.025);
+  text-align: center;
+  transition: border-color 160ms ease, background-color 160ms ease;
+}
+
+.tl-level b {
+  color: var(--t-text);
+  font-size: 13px;
+}
+
+.tl-level i {
+  height: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--t-accent);
+  font-style: normal;
+}
+
+.tl-dots {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.tl-dot {
+  width: 8px;
+  height: 8px;
+  border: 1.5px solid var(--t-accent);
+  border-radius: 50%;
+  background: transparent;
+}
+
+.tl-dot.is-on {
+  background: var(--t-accent);
+}
+
+.tl-level input:checked + span {
+  border-color: var(--t-accent);
+  background: rgba(217, 154, 85, 0.13);
+}
+
+.tl-level input:focus-visible + span {
+  box-shadow: 0 0 0 3px rgba(217, 154, 85, 0.35);
+}
+
+/* ---------- aksi ---------- */
+
+.tl-modal-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-top: 26px;
+  padding-top: 22px;
+  border-top: 1px solid var(--t-line);
+}
+
+.tl-summary {
+  margin: 0;
+  color: var(--t-soft);
+  font-size: 12.5px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.tl-spin {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(27, 19, 14, 0.25);
+  border-top-color: #1b130e;
+  border-radius: 50%;
+  animation: tlSpin 0.8s linear infinite;
+}
+
+.tl-spin-accent {
+  width: 20px;
+  height: 20px;
+  border-color: rgba(217, 154, 85, 0.25);
+  border-top-color: var(--t-accent);
+}
+
+@keyframes tlSpin {
+  to { transform: rotate(360deg); }
+}
+
+/* =========================================================
+   SCROLLBAR BERTEMA
+   ========================================================= */
+
+.tl-feed,
+.tl-chips,
+.tl-table,
+.tl-modal-panel {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(217, 154, 85, 0.45) transparent;
+}
+
+.tl-feed::-webkit-scrollbar,
+.tl-chips::-webkit-scrollbar,
+.tl-table::-webkit-scrollbar,
+.tl-modal-panel::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.tl-feed::-webkit-scrollbar-track,
+.tl-chips::-webkit-scrollbar-track,
+.tl-table::-webkit-scrollbar-track,
+.tl-modal-panel::-webkit-scrollbar-track {
+  border-radius: 999px;
+  background: rgba(255, 242, 220, 0.05);
+}
+
+.tl-chips::-webkit-scrollbar-track {
+  margin: 0 8px;
+}
+
+.tl-feed::-webkit-scrollbar-thumb,
+.tl-chips::-webkit-scrollbar-thumb,
+.tl-table::-webkit-scrollbar-thumb,
+.tl-modal-panel::-webkit-scrollbar-thumb {
+  border: 2px solid transparent;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--t-accent-deep), var(--t-accent));
+  background-clip: padding-box;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 960px) {
+  .tl-chat {
+    height: clamp(500px, 72dvh, 700px);
+  }
+
+  .tl-tool-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .tl-page {
+    --t-pad: 16px;
+  }
+
+  .tl-page .tl-nav {
+    height: 64px;
+    padding: 0 16px;
+  }
+
+  .tl-page .tl-nav-right {
+    gap: 10px;
+  }
+
+  .tl-page .tl-brand {
+    font-size: 13px;
+  }
+
+  .tl-page .tl-back {
+    height: 36px;
+    padding: 0 12px;
+    font-size: 12px;
+  }
+
+  .tl-page .tl-account {
+    width: 36px;
+    height: 36px;
+  }
+
+  .tl-content {
+    padding: 28px var(--t-pad) 32px;
+  }
+
+  .tl-page .tl-tabs {
+    align-self: stretch;
+  }
+
+  .tl-page .tl-tab {
+    flex: 1;
+    padding: 0 12px;
+  }
+
+  .tl-studio-block {
+    padding: 18px;
+    border-radius: 20px;
+  }
+
+  .tl-hist {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+
+  .tl-hist-actions {
+    grid-column: 1 / -1;
+    justify-content: flex-end;
+  }
+
+  .tl-chat-head {
+    padding: 14px;
+  }
+
+  .tl-feed {
+    padding: 18px 14px;
+  }
+
+  .tl-msg {
+    max-width: 96%;
+  }
+
+  .tl-composer {
+    padding: 12px 12px 14px;
+  }
+
+  .tl-input-wrap {
+    padding: 0 14px;
+  }
+
+  .tl-suggest-grid,
+  .tl-topics {
+    grid-template-columns: 1fr;
+  }
+
+  .tl-levels {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .tl-modal {
+    padding: 12px;
+  }
+
+  .tl-modal-panel {
+    padding: 24px 18px;
+    border-radius: 20px;
+  }
+
+  .tl-modal-actions {
+    flex-direction: column-reverse;
+    align-items: stretch;
+  }
+
+  .tl-summary {
+    text-align: center;
+  }
+
+  .tl-modal-actions .tl-primary {
+    width: 100%;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .tl-typing i,
+  .tl-spin,
+  .tl-page .tl-panel,
+  .tl-page .tl-panel.is-entering,
+  .tl-msg.is-new,
+  .tl-welcome > *,
+  .tl-chips:not([hidden]),
+  .tl-hist.is-new,
+  .tl-hist.is-done,
+  .tl-hist.is-removing,
+  .tl-hist.is-generating,
+  .tl-hist.is-generating::before,
+  .tl-magic i,
+  .tl-shimmer-text {
+    animation: none;
+    transition: none;
+  }
+    .tl-modal-backdrop,
+  .tl-modal-panel {
+    transition: opacity 120ms ease;
+    filter: none;
+    transform: none;
+    will-change: auto;
+  }
+
+  .tl-typing i {
+    opacity: 0.7;
+  }
+
+  .tl-page .tl-tab-ink.is-ready,
+  .tl-page .tl-back,
+  .tl-page .tl-back svg,
+  .tl-hist.is-playable {
+    transition: none;
+  }
+}
+/* =========================================================
+   REVISI 6: LAYOUT: toolbar tetap, scrollbar di bawah toolbar,
+   chat mengisi tinggi layar
+   ========================================================= */
+
+/* window tidak ikut scroll; yang scroll hanya .tl-scroller.
+   `scrollbar-gutter: stable` global (dashboard.css) membuat strip kosong di kanan
+   saat overflow hidden, jadi dimatikan selama halaman ini terbuka.
+   (.kuis-page ikut dimasukkan supaya masalah yang sama di kuis ikut beres.) */
+html:has(.tl-page),
+body:has(.tl-page) {
+  overflow: hidden;
+}
+
+html:has(.tl-page),
+html:has(.kuis-page) {
+  scrollbar-gutter: auto;
+}
+
+/* modal: window sudah tidak punya scrollbar, jadi tidak perlu padding kompensasi */
+body.tl-modal-open {
+  padding-right: 0;
+}
+
+main.tl-page {
+  height: 100vh;
+  height: 100dvh;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+main.tl-page .tl-nav {
+  flex: 0 0 auto;
+  height: auto;
+  min-height: calc(72px + env(safe-area-inset-top, 0px));
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-left: max(32px, env(safe-area-inset-left, 0px));
+  padding-right: max(32px, env(safe-area-inset-right, 0px));
+}
+
+.tl-scroller {
+  position: relative;
+  z-index: 1;
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-gutter: stable;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(217, 154, 85, 0.45) transparent;
+}
+
+.tl-scroller::-webkit-scrollbar {
+  width: 10px;
+}
+
+.tl-scroller::-webkit-scrollbar-track {
+  background: rgba(255, 242, 220, 0.04);
+}
+
+.tl-scroller::-webkit-scrollbar-thumb {
+  border: 2px solid transparent;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--t-accent-deep), var(--t-accent));
+  background-clip: padding-box;
+}
+
+.tl-scroller::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(90deg, var(--t-accent), var(--t-accent-soft));
+  background-clip: padding-box;
+}
+
+.tl-scroller > .tl-content {
+  flex: 1 0 auto;
+  padding-bottom: calc(40px + env(safe-area-inset-bottom, 0px));
+}
+
+/* panel dan chat mengisi sisa tinggi layar, jadi judul di atas
+   dan kolom prompt di bawah muat bersamaan */
+.tl-panel {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.tl-page .tl-chat {
+  flex: 1 1 auto;
+  height: auto;
+  min-height: 460px;
+  max-height: 780px;
+}
+
+.tl-composer {
+  padding-bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+}
+
+/* layar pendek (laptop kecil, HP): judul dipadatkan supaya chat tetap lega */
+@media (max-height: 800px) {
+  .tl-heading p {
+    display: none;
+  }
+
+  .tl-heading h1 {
+    margin-top: 8px;
+    font-size: clamp(28px, 3.6vw, 38px);
+  }
+
+  .tl-scroller > .tl-content {
+    padding-top: 20px;
+    gap: 18px;
+  }
+
+  .tl-note {
+    margin-top: 8px;
+  }
+}
+
+
+
+/* =========================================================
+   REVISI 8: PC & MOBILE
+   ========================================================= */
+
+.tl-page button,
+.tl-page .tl-tool,
+.tl-page .tl-hist,
+.tl-page .tl-suggest {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.tl-link {
+  padding: 6px 2px;
+}
+
+@media (max-width: 720px) {
+  main.tl-page .tl-nav {
+    min-height: calc(64px + env(safe-area-inset-top, 0px));
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+  }
+
+  .tl-scroller > .tl-content {
+    padding-left: var(--t-pad);
+    padding-right: var(--t-pad);
+    padding-bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+  }
+
+  /* chat boleh lebih pendek di HP supaya judul + kolom prompt muat satu layar */
+  .tl-page .tl-chat {
+    min-height: 340px;
+    border-radius: 20px;
+  }
+
+  .tl-modal {
+    padding:
+      max(12px, env(safe-area-inset-top, 0px))
+      max(12px, env(safe-area-inset-right, 0px))
+      max(12px, env(safe-area-inset-bottom, 0px))
+      max(12px, env(safe-area-inset-left, 0px));
+  }
+
+  .tl-modal-panel {
+    max-height: calc(100dvh - 24px);
+  }
+
+  .tl-hist.is-generating .tl-hist-actions {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 520px) {
+  .tl-page .tl-brand {
+    gap: 8px;
+    font-size: 12.5px;
+    min-width: 0;
+  }
+
+  .tl-page .tl-brand > span:last-child {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .tl-page .tl-brand-symbol {
+    width: 28px;
+    height: 28px;
+    font-size: 15px;
+  }
+
+  .tl-page .tl-back {
+    padding: 0 10px;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION (animasi baru)
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .tl-skel,
+  .tl-hist.is-generating.is-new {
+    animation: none;
+  }
+
+  .tl-hist .tl-magic {
+    display: none;
+  }
+}
+/* =========================================================
+   REVISI 9: DIALOG: scrollbar berjarak + blur halus
+   ========================================================= */
+
+/* ---------- scrollbar: dialog tidak lagi scroll langsung,
+   yang scroll adalah wadah di dalamnya, track diberi jarak ---------- */
+
+.tl-modal-panel {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 14px 8px 14px 0;
+}
+
+.tl-modal-scroll {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 16px 22px 16px 30px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(217, 154, 85, 0.45) transparent;
+}
+
+.tl-modal-scroll::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* mulai di bawah tombol tutup, berhenti sebelum sudut bawah */
+.tl-modal-scroll::-webkit-scrollbar-track {
+  margin: 48px 0 20px;
+  border-radius: 999px;
+  background: rgba(255, 242, 220, 0.05);
+}
+
+.tl-modal-scroll::-webkit-scrollbar-thumb {
+  border: 2px solid transparent;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--t-accent-deep), var(--t-accent));
+  background-clip: padding-box;
+}
+
+/* ---------- blur halus ----------
+   Penyebab "tiba-tiba muncul": yang dianimasikan hanya opacity, sedangkan
+   backdrop-filter langsung penuh sejak frame pertama. Sekarang radius blur dan
+   warna latar ikut bertransisi dari 0, dan filter blur di panel dibuang
+   (dua blur bersamaan membuat animasi patah-patah). */
+
+.tl-modal-backdrop {
+  background: rgba(7, 5, 4, 0);
+  -webkit-backdrop-filter: blur(0px);
+  backdrop-filter: blur(0px);
+  opacity: 1;
+  will-change: auto;
+  transition:
+    background-color 380ms ease,
+    -webkit-backdrop-filter 380ms ease,
+    backdrop-filter 380ms ease;
+}
+
+.tl-modal.is-open .tl-modal-backdrop {
+  background: rgba(7, 5, 4, 0.6);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  opacity: 1;
+}
+
+.tl-modal-panel {
+  filter: none;
+  opacity: 0;
+  transform: translate3d(0, 14px, 0) scale(0.98);
+  transition:
+    opacity 300ms cubic-bezier(0.33, 1, 0.68, 1),
+    transform 380ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.tl-modal.is-open .tl-modal-panel {
+  filter: none;
+  opacity: 1;
+  transform: none;
+}
+
+.tl-modal.is-settled .tl-modal-panel {
+  will-change: auto;
+}
+
+/* animasi latar dijeda selama dialog terbuka supaya blur tidak dihitung ulang tiap frame */
+body.tl-modal-open .tl-gen-flash,
+body.tl-modal-open .tl-gen-fx i,
+body.tl-modal-open .tl-gen-spin,
+body.tl-modal-open .tl-tab-ink {
+  animation-play-state: paused;
+}
+
+@media (max-width: 720px) {
+  .tl-modal-panel {
+    padding: 12px 6px 12px 0;
+    border-radius: 20px;
+  }
+
+  .tl-modal-scroll {
+    padding: 14px 12px 14px 18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tl-modal-backdrop {
+    transition: background-color 120ms ease;
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+  }
+
+  .tl-modal-panel {
+    transition: opacity 120ms ease;
+    transform: none;
+  }
+}
+
+/* =========================================================
+   REVISI 10: KARTU "SEDANG MENYUSUN" (spinner + kilatan + debu)
+   ========================================================= */
+
+.tl-hist.is-generating,
+.tl-hist.is-generating:hover {
+  position: relative;
+  overflow: hidden;
+  padding: 18px 20px;
+  border-color: transparent;
+  border-radius: 22px;
+  background: rgba(12, 8, 5, 0.55);
+  box-shadow: none;
+  transform: none;
+  animation: none;
+}
+
+/* animasi masuk hanya saat kartu pertama kali muncul */
+.tl-hist.is-generating.is-new {
+  animation: tlHistIn 540ms cubic-bezier(0.22, 1, 0.36, 1) backwards;
+  animation-delay: var(--d, 0ms);
+}
+
+/* sapuan cahaya versi lama dimatikan */
+.tl-hist.is-generating::before {
+  display: none;
+}
+
+.tl-hist.is-generating .tl-hist-title {
+  color: var(--t-text);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.tl-hist.is-generating .tl-hist-body small {
+  color: var(--t-muted);
+}
+
+.tl-hist.is-generating .tl-hist-actions {
+  position: relative;
+  z-index: 1;
+}
+
+/* ----- spinner (busur 3/4, seperti di contoh) ----- */
+
+.tl-gen-icon {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+}
+
+.tl-gen-spin {
+  width: 26px;
+  height: 26px;
+  border: 2.5px solid var(--t-accent-soft);
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  animation: tlSpin 0.9s linear infinite;
+}
+
+/* ----- kilatan primary lurus dari kiri ke kanan + debu ----- */
+
+.tl-gen-fx {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  pointer-events: none;
+  contain: layout paint;
+}
+
+.tl-gen-flash {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 38%,
+    rgba(217, 154, 85, 0.1) 46%,
+    rgba(235, 189, 134, 0.3) 50%,
+    rgba(217, 154, 85, 0.1) 54%,
+    transparent 62%
+  );
+  transform: translateX(-100%);
+  animation: tlFlash 2.2s cubic-bezier(0.45, 0, 0.35, 1) infinite;
+  will-change: transform;
+}
+
+@keyframes tlFlash {
+  to { transform: translateX(100%); }
+}
+
+/* percik debu: titik kecil saja, melayang ke kanan */
+.tl-gen-fx i {
+  position: absolute;
+  left: -1%;
+  top: var(--y, 50%);
+  width: var(--s, 2px);
+  height: var(--s, 2px);
+  border-radius: 50%;
+  background: #ffd9a3;
+  opacity: 0;
+  animation: tlSpeck var(--du, 3s) linear infinite;
+  animation-delay: var(--dl, 0s);
+}
+
+@keyframes tlSpeck {
+  0% { left: -1%; opacity: 0; transform: translateY(0); }
+  15% { opacity: 0.9; }
+  85% { opacity: 0.6; }
+  100% { left: 101%; opacity: 0; transform: translateY(-4px); }
+}
+
+@media (max-width: 720px) {
+  .tl-hist.is-generating,
+  .tl-hist.is-generating:hover {
+    padding: 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tl-hist.is-generating.is-new {
+    animation: none;
+  }
+
+  /* kilatan & debu dimatikan; spinner tetap berputar sebagai penanda proses */
+  .tl-gen-fx {
+    display: none;
+  }
+}
+/* =========================================================
+   REVISI 12
+   ========================================================= */
+
+/* ---------- 1. SCROLLBAR DIALOG ----------
+   Tampilan disamakan dengan yang sekarang (tipis, thumb warna aksen,
+   track transparan). Yang berubah cuma: ada jarak atas-bawah.
+   Margin track tadinya diabaikan Chrome karena scrollbar-width /
+   scrollbar-color diisi, jadi di sini dikembalikan ke auto. */
+.tl-modal-scroll {
+  position: relative;
+  margin: 12px 0;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(217, 154, 85, 0.45) transparent;
+}
+
+.tl-modal-scroll::-webkit-scrollbar {
+  width: 10px;
+}
+
+.tl-modal-scroll::-webkit-scrollbar-track {
+  margin: 10px 0;
+  background: rgba(255, 242, 220, 0.04);
+}
+
+.tl-modal-scroll::-webkit-scrollbar-thumb {
+  border: 2px solid transparent;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--t-accent-deep), var(--t-accent));
+  background-clip: padding-box;
+}
+
+.tl-modal-scroll::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(90deg, var(--t-accent), var(--t-accent-soft));
+  background-clip: padding-box;
+}
+/* Firefox */
+@supports not selector(::-webkit-scrollbar) {
+  .tl-modal-scroll {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(217, 154, 85, 0.45) transparent;
+  }
+}
+
+/* ---------- 2. TOMBOL CLOSE ----------
+   Sekarang ada DI DALAM area scroll (ikut bergulir, tidak sticky),
+   dan geser jauh ke kiri dari scrollbar. */
+.tl-modal-close {
+  top: 20px;
+  right: 40px;
+}
+
+.tl-modal-panel h2 {
+  padding-right: 68px;
+}
+
+.tl-modal-panel:focus,
+.tl-modal-panel:focus-visible {
+  outline: none;
+}
+
+/* ---------- 3. BLUR LATAR ----------
+   backdrop-filter dimatikan total (dua kali dicoba, dua kali patah-patah).
+   Yang diblur sekarang halaman di belakangnya lewat `filter` biasa,
+   teknik yang sama dengan transisi tab dan kartu riwayat, dan
+   transisinya terpasang di elemen yang sudah ada sejak awal. */
+.tl-modal-backdrop,
+.tl-modal.is-open .tl-modal-backdrop {
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  opacity: 1;
+  transform: none;
+  will-change: auto;
+}
+
+.tl-modal-backdrop {
+  background: rgba(7, 5, 4, 0);
+  transition: background-color 420ms ease;
+}
+
+.tl-modal.is-open .tl-modal-backdrop {
+  background: rgba(7, 5, 4, 0.5);
+}
+
+.tl-modal.is-closing .tl-modal-backdrop {
+  transition-duration: 300ms;
+}
+
+.tl-page > .tl-nav,
+.tl-page > .tl-scroller {
+  transition: filter 420ms cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+.tl-page.is-blurred > .tl-nav,
+.tl-page.is-blurred > .tl-scroller {
+  filter: blur(6px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tl-page > .tl-nav,
+  .tl-page > .tl-scroller {
+    transition: none;
+  }
+}
+
+/* ---------- 4. KARTU "MEMBUAT" = SKELETON (tetap seperti revisi 11) ---------- */
+.tl-hist.is-generating,
+.tl-hist.is-generating:hover {
+  padding: 14px 16px;
+  border-color: var(--t-line);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.tl-hist.is-generating .tl-hist-body {
+  gap: 9px;
+}
+
+.tl-sk {
+  display: block;
+  border-radius: 8px;
+  background: rgba(255, 242, 220, 0.075);
+}
+
+.tl-sk-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+}
+
+.tl-sk-line {
+  height: 11px;
+}
+
+.tl-sk-title {
+  width: 42%;
+  height: 14px;
+}
+
+.tl-sk-sub {
+  width: 74%;
+}
+
+.tl-sk-meta {
+  width: 30%;
+  height: 9px;
+}
+
+.tl-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.tl-gen-flash {
+  background: linear-gradient(
+    90deg,
+    transparent 30%,
+    rgba(217, 154, 85, 0.12) 45%,
+    rgba(235, 189, 134, 0.3) 50%,
+    rgba(217, 154, 85, 0.12) 55%,
+    transparent 70%
+  );
+  animation: tlFlash 1.8s linear infinite;
+}
+
+.tl-gen-fx i {
+  background: #f3cf9f;
+}
+
+@keyframes tlSpeck {
+  0% { left: -1%; opacity: 0; transform: translateY(0); }
+  15% { opacity: 0.7; }
+  85% { opacity: 0.45; }
+  100% { left: 101%; opacity: 0; transform: translateY(-3px); }
+}
+
+@media (max-width: 720px) {
+  .tl-hist.is-generating,
+  .tl-hist.is-generating:hover {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    padding: 14px;
+  }
+
+  .tl-hist.is-generating .tl-hist-actions {
+    grid-column: auto;
+    justify-content: flex-end;
+  }
+
+  .tl-modal-close {
+    right: 24px;
+  }
+
+  .tl-modal-panel h2 {
+    padding-right: 60px;
+  }
+}
+/* =========================================================
+   REVISI 13: LAMPU STATUS KONEKSI AI
+   ========================================================= */
+
+.tl-status i {
+  transition: background-color 240ms ease, box-shadow 240ms ease;
+}
+
+.tl-status.is-on i {
+  background: var(--t-ok);
+  box-shadow: 0 0 0 3px rgba(140, 199, 154, 0.18);
+}
+
+.tl-status.is-checking i {
+  background: var(--t-accent);
+  animation: tlStatusPulse 1.2s ease-in-out infinite;
+}
+
+.tl-status.is-limit {
+  color: var(--t-accent-soft);
+}
+
+.tl-status.is-limit i {
+  background: var(--t-accent);
+  box-shadow: 0 0 0 3px rgba(217, 154, 85, 0.2);
+}
+
+.tl-status.is-off i {
+  background: var(--t-bad);
+  box-shadow: 0 0 0 3px rgba(224, 134, 120, 0.16);
+}
+
+@keyframes tlStatusPulse {
+  0%, 100% { opacity: 0.35; }
+  50% { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tl-status.is-checking i {
+    animation: none;
+  }
+}
+/* =========================================================
+   REVISI 14: ANIMASI KELUAR HALAMAN
+   Dipakai saat Kembali / logo / Esc / Akun, sama seperti halaman Kuis.
+   ========================================================= */
+
+@keyframes tlLeave {
+  to { opacity: 0; filter: blur(8px); transform: translateY(-14px); }
+}
+
+.tl-content.is-leaving {
+  pointer-events: none;
+  animation: tlLeave 240ms ease forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tl-content.is-leaving {
+    animation: none;
+  }
+}

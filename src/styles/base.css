@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Serif:wght@500;600;700&display=swap');
+
+:root {
+  font-family: Inter, system-ui, sans-serif;
+  color: #f8eee2;
+  background: #160e09;
+  font-synthesis: none;
+}
+
+* { box-sizing: border-box; }
+html, body, #app { margin: 0; width: 100%; min-height: 100%; min-height: 100dvh; }
+body { overflow-x: hidden; background: #160e09; }
+button, input { font: inherit; }
+button { -webkit-tap-highlight-color: transparent; }

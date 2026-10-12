@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect x="2" y="2" width="60" height="60" rx="16" fill="#211914"/>
+  <rect x="3.5" y="3.5" width="57" height="57" rx="14.5" fill="none" stroke="#d99a55" stroke-opacity="0.45" stroke-width="3"/>
+  <text x="31" y="50" text-anchor="middle" font-size="40" font-weight="600" fill="#ebbd86" font-family="'Noto Serif Devanagari','Noto Serif','Kohinoor Devanagari','Nirmala UI','Mangal',serif">ॐ</text>
+</svg>

@@ -1,0 +1,842 @@
+/* =========================================================
+   TOKEN ANIMASI
+   Ubah di sini untuk mengatur "rasa" semua transisi sekaligus.
+   ========================================================= */
+
+:root {
+  --ease-out: cubic-bezier(.2, .8, .2, 1);
+  --blur-enter: 14px;
+  --blur-leave: 10px;
+  --blur-modal: 12px;
+  --dur-enter: .7s;
+  --dur-leave: .24s;
+  --dur-modal-in: .4s;
+  --dur-modal-out: .22s;
+}
+
+.page {
+  position: relative;
+  min-height: 100dvh;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 75% 30%, rgba(191, 102, 31, .1), transparent 30%),
+    radial-gradient(circle at 15% 80%, rgba(126, 54, 21, .08), transparent 28%),
+    #160e09;
+}
+
+.navbar {
+  position: relative;
+  z-index: 3;
+  width: min(1180px, calc(100% - 48px));
+  margin: auto;
+  padding: 26px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  border: 0;
+  padding: 0;
+  color: #f7ebdc;
+  background: transparent;
+  font-size: 15px;
+  font-weight: 750;
+  cursor: pointer;
+}
+
+.brand-symbol {
+  flex: none;
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(232, 166, 83, .42);
+  border-radius: 50%;
+  color: #e8a653;
+  background: rgba(110, 52, 19, .28);
+  font-family: "Noto Serif", serif;
+  font-size: 21px;
+}
+
+.brand-symbol svg { display: block; }
+
+.brand-symbol.large {
+  width: 62px;
+  height: 62px;
+  margin: auto;
+  font-size: 32px;
+}
+
+.nav-login {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 20px;
+  border: 1px solid #4b2e1c;
+  border-radius: 13px;
+  color: #f7ebdc;
+  background: #24150e;
+  cursor: pointer;
+  transition: transform .2s ease, background .2s ease;
+}
+
+.nav-login svg { flex: none; color: #e8a653; }
+
+.nav-login:hover, .secondary-button:hover { background: #302016; }
+
+.hero {
+  position: relative;
+  z-index: 2;
+  width: min(1180px, calc(100% - 48px));
+  min-height: 520px;
+  margin: auto;
+  padding: 65px 0 55px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 70px;
+}
+
+.hero-copy { max-width: 650px; }
+
+.eyebrow { display: inline-block; margin-bottom: 16px; }
+
+.hero h1 {
+  margin: 0;
+  font-family: "Noto Serif", serif;
+  font-size: clamp(38px, 7vw, 82px);
+  line-height: 1.04;
+  letter-spacing: -3.5px;
+  color: #fff2e2;
+}
+
+.hero h1 span { color: #e7a451; }
+
+.hero-copy > p {
+  max-width: 570px;
+  margin: 24px 0 30px;
+  color: #ad9989;
+  line-height: 1.8;
+  font-size: 16px;
+}
+
+.hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+
+.primary-button, .secondary-button {
+  min-height: 52px;
+  padding: 0 23px;
+  border-radius: 15px;
+  font-weight: 750;
+  cursor: pointer;
+  transition: transform .2s ease, filter .2s ease, background .2s ease;
+}
+
+.primary-button {
+  border: 0;
+  color: #27170c;
+  background: linear-gradient(135deg, #f0bd72, #d88938);
+  box-shadow: 0 15px 45px rgba(215, 137, 56, .18);
+}
+
+/* tombol utama: satu-satunya aksi di hero, lebar penuh + besar */
+.hero-actions .primary-button {
+  width: 100%;
+  min-height: 68px;
+  padding: 0 28px;
+  border-radius: 18px;
+  font-size: 18px;
+  letter-spacing: .2px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  box-shadow: 0 18px 55px rgba(215, 137, 56, .26);
+}
+
+/* ikon "back" diputar 180deg supaya menunjuk ke depan */
+.hero-actions .primary-button .cta-icon {
+  display: inline-flex;
+  flex: none;
+  transform: rotate(180deg);
+  transition: transform .2s ease;
+}
+
+.hero-actions .primary-button .cta-icon svg { display: block; }
+
+.hero-actions .primary-button:hover .cta-icon {
+  transform: translateX(4px) rotate(180deg);
+}
+
+.hero-actions .primary-button:focus-visible,
+.nav-login:focus-visible,
+.brand:focus-visible {
+  outline: 2px solid #f0bd72;
+  outline-offset: 3px;
+}
+
+.secondary-button {
+  color: #f5e9da;
+  background: #24150e;
+  border: 1px solid #4b2e1c;
+}
+
+.primary-button:hover { filter: brightness(1.07); }
+.primary-button:active, .secondary-button:active, .nav-login:active { transform: scale(.97); }
+
+.dharma-art {
+  position: relative;
+  width: 390px;
+  height: 390px;
+  flex: 0 0 390px;
+}
+
+.sun {
+  position: absolute;
+  inset: 65px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(232, 166, 83, .22), rgba(156, 69, 24, .04) 65%, transparent 70%);
+}
+
+.art-ring {
+  position: absolute;
+  inset: 24px;
+  border: 1px solid rgba(232, 166, 83, .18);
+  border-radius: 50%;
+  animation: spin 24s linear infinite;
+}
+.ring-two { inset: 72px; border-style: dashed; animation-direction: reverse; animation-duration: 17s; }
+
+.lotus {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 185px;
+  height: 145px;
+}
+
+.lotus i {
+  position: absolute;
+  left: 50%;
+  bottom: 20px;
+  width: 66px;
+  height: 115px;
+  transform-origin: 50% 100%;
+  border-radius: 70% 15% 70% 15%;
+  background: linear-gradient(150deg, #f0c27b, #b65a28);
+  opacity: .78;
+}
+
+.lotus i:nth-child(1) { transform: translateX(-50%) rotate(0deg); }
+.lotus i:nth-child(2) { transform: translateX(-50%) rotate(45deg); }
+.lotus i:nth-child(3) { transform: translateX(-50%) rotate(90deg); }
+.lotus i:nth-child(4) { transform: translateX(-50%) rotate(135deg); }
+.lotus i:nth-child(5) { transform: translateX(-50%) rotate(180deg); }
+.lotus i:nth-child(6) { transform: translateX(-50%) rotate(225deg); }
+.lotus i:nth-child(7) { transform: translateX(-50%) rotate(270deg); }
+.lotus i:nth-child(8) { transform: translateX(-50%) rotate(315deg); }
+
+.om-center {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 100px;
+  height: 100px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: #f4bd70;
+  background: #29160c;
+  border: 1px solid rgba(232, 166, 83, .35);
+  box-shadow: 0 20px 80px rgba(210, 119, 39, .2);
+  font-family: "Noto Serif", serif;
+  font-size: 43px;
+}
+
+.om-center svg { display: block; }
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.topics {
+  position: relative;
+  z-index: 2;
+  width: min(1180px, calc(100% - 48px));
+  margin: 0 auto 50px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.topic-card {
+  padding: 20px;
+  border: 1px solid #3d281a;
+  border-radius: 18px;
+  background: rgba(35, 21, 14, .72);
+}
+
+.topic-card strong { display: block; color: #9a7151; font-size: 11px; letter-spacing: 2px; }
+.topic-card span { display: block; margin-top: 8px; color: #f3e6d7; font-weight: 700; }
+.topic-card small { display: block; margin-top: 7px; color: #9f8b7b; line-height: 1.5; }
+
+footer {
+  position: relative;
+  z-index: 2;
+  padding: 0 0 25px;
+  text-align: center;
+  color: #725d4d;
+  font-size: 12px;
+}
+
+/* =========================================================
+   LAYOUT HALAMAN HOME
+   Navbar di atas, hero mengisi ruang tengah, footer selalu
+   menempel di paling bawah layar (seperti copyright).
+   ========================================================= */
+
+.home-page {
+  display: flex;
+  flex-direction: column;
+}
+
+.home-page > .navbar,
+.home-page > .hero {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.home-page > .hero {
+  flex: 1 0 auto;
+}
+
+.home-page > footer {
+  margin-top: auto;
+  padding: 24px 24px 25px;
+}
+
+/* =========================================================
+   ANIMASI MASUK HALAMAN
+   Setiap halaman (semua yang memakai class `.page`) saat baru
+   dirender: konten fade-in + blur-in sambil naik sedikit.
+   Karena tiap tombol memindahkan halaman dengan merender ulang,
+   efek ini otomatis muncul setelah tombol apa pun diklik.
+   `filter` kembali ke `none` setelah animasi selesai, jadi
+   tidak ada sisa blur / stacking context yang menetap.
+   ========================================================= */
+
+@keyframes pageRise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+    filter: blur(var(--blur-enter));
+  }
+}
+
+.page > :where(:not(.ambient, .tl-glow)) {
+  animation: pageRise var(--dur-enter) var(--ease-out) .08s backwards;
+}
+
+.page > :where(.navbar, .tl-nav) {
+  animation-delay: 0s;
+}
+
+/* Home: hero tidak dianimasikan sebagai satu blok, tapi per bagian
+   supaya muncul berurutan */
+.home-page > .hero {
+  animation: none;
+}
+
+.home-page .hero-copy > * {
+  animation: pageRise .8s var(--ease-out) backwards;
+}
+
+.home-page .hero-copy > :nth-child(1) { animation-delay: .08s; }
+.home-page .hero-copy > :nth-child(2) { animation-delay: .16s; }
+.home-page .hero-copy > :nth-child(3) { animation-delay: .24s; }
+.home-page .hero-copy > :nth-child(4) { animation-delay: .32s; }
+
+.home-page .dharma-art {
+  animation: pageRise 1s var(--ease-out) .2s backwards;
+}
+
+.home-page > footer {
+  animation-delay: .4s;
+}
+
+/* =========================================================
+   ANIMASI KELUAR (sebelum pindah halaman)
+   JS menambahkan `.is-leaving` setelah tombol diklik.
+   Durasi harus sama dengan TIMING.pageLeave di JS.
+   ========================================================= */
+
+.page.is-leaving > :where(:not(.ambient)) {
+  opacity: 0;
+  transform: translateY(-14px);
+  filter: blur(var(--blur-leave));
+  transition:
+    opacity var(--dur-leave) ease,
+    transform var(--dur-leave) ease,
+    filter var(--dur-leave) ease;
+  pointer-events: none;
+}
+
+/* =========================================================
+   MODAL TENTANG: fade + blur in, fade + blur out saat ditutup
+   Latar belakang ikut ter-blur lewat backdrop-filter.
+   ========================================================= */
+
+@keyframes aboutFadeIn {
+  from {
+    opacity: 0;
+    -webkit-backdrop-filter: blur(0);
+    backdrop-filter: blur(0);
+  }
+}
+
+@keyframes aboutRiseIn {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(.97);
+    filter: blur(var(--blur-modal));
+  }
+}
+
+@keyframes aboutFadeOut {
+  to {
+    opacity: 0;
+    -webkit-backdrop-filter: blur(0);
+    backdrop-filter: blur(0);
+  }
+}
+
+@keyframes aboutRiseOut {
+  to {
+    opacity: 0;
+    transform: translateY(12px) scale(.98);
+    filter: blur(var(--blur-modal));
+  }
+}
+
+.about-overlay {
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  animation: aboutFadeIn .3s ease backwards;
+}
+
+.about-modal {
+  animation: aboutRiseIn var(--dur-modal-in) var(--ease-out) backwards;
+  /* aman di layar pendek: isi modal bisa di-scroll */
+  max-height: calc(100dvh - 32px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.about-overlay.is-closing {
+  animation: aboutFadeOut var(--dur-modal-out) ease forwards;
+  pointer-events: none;
+}
+
+.about-overlay.is-closing .about-modal {
+  animation: aboutRiseOut var(--dur-modal-out) ease forwards;
+}
+
+/* daftar anggota muncul berurutan (index lewat --i dari JS) */
+.about-member {
+  animation: pageRise .55s var(--ease-out) calc(.18s + var(--i, 0) * .05s) backwards;
+}
+
+.about-close svg {
+  display: block;
+  margin: auto;
+}
+
+/* =========================================================
+   RESPONSIF
+   Tablet & mobile: hero ditumpuk ke bawah, teks di atas,
+   ilustrasi dikecilkan dengan scale (bentuknya tetap utuh).
+   ========================================================= */
+
+@media (max-width: 900px) {
+  .navbar,
+  .hero,
+  .topics {
+    width: calc(100% - 40px);
+  }
+
+  .navbar { padding: 20px 0; }
+
+  .hero {
+    min-height: 0;
+    padding: 28px 0 36px;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 40px;
+  }
+
+  .hero-copy { max-width: none; }
+
+  .hero h1 { letter-spacing: -2px; }
+
+  .hero-copy > p {
+    margin: 20px 0 28px;
+    font-size: 15.5px;
+    line-height: 1.75;
+  }
+
+  /* 390px * .72 ≈ 281px; margin negatif menutup sisa ruang kosong */
+  .dharma-art {
+    align-self: center;
+    flex: none;
+    transform: scale(.72);
+    transform-origin: top center;
+    margin-bottom: -109px;
+  }
+
+  .topics { grid-template-columns: 1fr; margin-bottom: 36px; }
+
+  .home-page > footer {
+    padding: 20px 20px calc(22px + env(safe-area-inset-bottom, 0px));
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    /* blur lebih ringan di HP supaya animasi tetap mulus */
+    --blur-enter: 9px;
+    --blur-leave: 7px;
+    --blur-modal: 8px;
+  }
+
+  .navbar,
+  .hero,
+  .topics {
+    width: calc(100% - 32px);
+  }
+
+  .brand { font-size: 14px; gap: 9px; }
+
+  .brand-symbol { width: 34px; height: 34px; }
+
+  .nav-login { padding: 10px 15px; font-size: 14px; }
+
+  .hero { padding-top: 20px; gap: 32px; }
+
+  .hero h1 { letter-spacing: -1.2px; }
+
+  .hero-actions .primary-button {
+    min-height: 64px;
+    font-size: 17px;
+  }
+
+  /* 390px * .62 ≈ 242px */
+  .dharma-art {
+    transform: scale(.62);
+    margin-bottom: -148px;
+  }
+}
+
+@media (max-width: 360px) {
+  .brand span:last-child { font-size: 13px; }
+  .nav-login svg { display: none; }
+}
+
+/* =========================================================
+   HALAMAN DATA DIRI (anon-page)
+   Semua class diawali `anon-` dan di-scope ke `.anon-page`,
+   supaya tidak ketimpa / bentrok dengan style form halaman lain.
+   ========================================================= */
+
+.anon-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding:
+    max(24px, env(safe-area-inset-top, 0px))
+    16px
+    max(24px, env(safe-area-inset-bottom, 0px));
+}
+
+.anon-page .anon-card {
+  position: relative;
+  z-index: 2;
+  width: min(460px, 100%);
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  padding: 28px;
+  border: 1px solid #3d281a;
+  border-radius: 26px;
+  background: rgba(35, 21, 14, .78);
+  box-shadow: 0 30px 90px rgba(0, 0, 0, .35);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+
+.anon-page .anon-back {
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  border: 1px solid #4b2e1c;
+  border-radius: 50%;
+  color: #f7ebdc;
+  background: #24150e;
+  cursor: pointer;
+  transition: transform .2s ease, background .2s ease;
+}
+
+.anon-page .anon-back svg { display: block; }
+.anon-page .anon-back:hover { background: #302016; }
+.anon-page .anon-back:active { transform: scale(.94); }
+
+.anon-page .anon-back:focus-visible,
+.anon-page .anon-form .primary-button:focus-visible {
+  outline: 2px solid #f0bd72;
+  outline-offset: 3px;
+}
+
+.anon-page .anon-head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  text-align: center;
+}
+
+.anon-page .anon-head .brand-symbol.large { margin: 0 0 6px; }
+
+.anon-page .anon-head h1 {
+  margin: 0;
+  font-family: "Noto Serif", serif;
+  font-size: clamp(27px, 7vw, 34px);
+  line-height: 1.15;
+  letter-spacing: -1px;
+  color: #fff2e2;
+}
+
+.anon-page .anon-head p {
+  max-width: 34ch;
+  margin: 0;
+  color: #ad9989;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.anon-page .anon-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* isi form muncul berurutan setelah kartu masuk */
+.anon-page .anon-head > *,
+.anon-page .anon-form > * {
+  animation: pageRise .7s var(--ease-out) backwards;
+}
+
+.anon-page .anon-head > :nth-child(1) { animation-delay: .15s; }
+.anon-page .anon-head > :nth-child(2) { animation-delay: .21s; }
+.anon-page .anon-head > :nth-child(3) { animation-delay: .27s; }
+
+.anon-page .anon-form > :nth-child(1) { animation-delay: .30s; }
+.anon-page .anon-form > :nth-child(2) { animation-delay: .36s; }
+.anon-page .anon-form > :nth-child(3) { animation-delay: .42s; }
+.anon-page .anon-form > :nth-child(4) { animation-delay: .48s; }
+.anon-page .anon-form > :nth-child(5) { animation-delay: .54s; }
+
+/* satu field = label + SATU kotak. Semua properti kotak dipasang
+   di .anon-field-box; input di dalamnya dibuat polos total. */
+.anon-page .anon-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+}
+
+.anon-page .anon-field > label {
+  margin: 0;
+  color: #d9c3ac;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.anon-page .anon-field-box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 56px;
+  padding: 0 16px;
+  border: 1px solid #4b2e1c;
+  border-radius: 15px;
+  color: #9a7151;
+  background: #24150e;
+  transition: border-color .2s ease, box-shadow .2s ease, color .2s ease;
+}
+
+.anon-page .anon-field-box svg { flex: none; }
+
+.anon-page .anon-field-box.is-typing,
+.anon-page .anon-field-box:focus-within {
+  color: #e8a653;
+  border-color: #e8a653;
+  box-shadow: 0 0 0 4px rgba(232, 166, 83, .14);
+}
+
+.anon-page .anon-field-box input.anon-input {
+  flex: 1;
+  width: auto;
+  min-width: 0;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  outline: 0;
+  box-shadow: none;
+  background: transparent;
+  -webkit-appearance: none;
+  appearance: none;
+  color: #fff2e2;
+  font: inherit;
+  font-size: 16px; /* 16px mencegah iOS zoom otomatis saat fokus */
+  line-height: normal;
+}
+
+.anon-page .anon-field-box input.anon-input::placeholder { color: #725d4d; }
+
+/* autofill Chrome/Safari: cegah latar kuning/putih */
+.anon-page .anon-field-box input.anon-input:-webkit-autofill {
+  -webkit-text-fill-color: #fff2e2;
+  caret-color: #fff2e2;
+  box-shadow: 0 0 0 100px #24150e inset;
+}
+
+.anon-page .anon-field.is-invalid .anon-field-box {
+  color: #f0917a;
+  border-color: #d9694f;
+}
+
+/* pesan error: blur-in halus saat muncul */
+@keyframes anonErrorIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+    filter: blur(5px);
+  }
+}
+
+.anon-page .anon-error {
+  color: #f0917a;
+  font-size: 12.5px;
+  animation: anonErrorIn .3s var(--ease-out) backwards;
+}
+
+.anon-page .anon-error:empty { display: none; }
+
+.anon-page .anon-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 0;
+  color: #9f8b7b;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.anon-page .anon-note svg {
+  flex: none;
+  margin-top: 2px;
+  color: #9a7151;
+}
+
+.anon-page .anon-form .primary-button {
+  width: 100%;
+  min-height: 62px;
+  border-radius: 17px;
+  font-size: 17px;
+}
+
+@media (max-width: 480px) {
+  .anon-page .anon-card {
+    gap: 24px;
+    padding: 22px 20px;
+    border-radius: 22px;
+  }
+
+  .anon-page .anon-form { gap: 18px; }
+}
+
+/* =========================================================
+   DASHBOARD: identitas (kelas & sekolah) di bawah sapaan
+   Pindahkan ke file CSS dashboard kalau mau dirapikan.
+   ========================================================= */
+
+.dashboard-identity {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.dashboard-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  max-width: 100%;
+  padding: 8px 14px;
+  border: 1px solid #4b2e1c;
+  border-radius: 999px;
+  color: #d9c3ac;
+  background: rgba(36, 21, 14, .72);
+  font-size: 13.5px;
+  line-height: 1.3;
+}
+
+.dashboard-chip svg {
+  flex: none;
+  color: #e8a653;
+}
+
+.dashboard-chip span {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+/* =========================================================
+   REDUCED MOTION
+   Semua animasi, transisi, dan blur dimatikan total.
+   Ditaruh paling bawah supaya menimpa aturan di atasnya.
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .page > :where(:not(.ambient, .tl-glow)),
+  .home-page .hero-copy > *,
+  .home-page .dharma-art,
+  .about-overlay,
+  .about-modal,
+  .about-member,
+  .anon-page .anon-head > *,
+  .anon-page .anon-form > *,
+  .anon-page .anon-error,
+  .art-ring {
+    animation: none;
+  }
+
+  .page.is-leaving > :where(:not(.ambient)) {
+    transition: none;
+    filter: none;
+  }
+
+  .anon-page .anon-field-box,
+  .anon-page .anon-back { transition: none; }
+}
